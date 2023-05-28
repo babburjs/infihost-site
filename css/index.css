@@ -1,0 +1,227 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --color-light: #f0f0f0;
+    --color-light75: #f0f0f075;
+    --color-light50: #f0f0f050;
+
+    --color-dark: #141414;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-light);
+    background-color: var(--color-dark);
+    margin: 0;
+    overflow-x: hidden;
+}
+
+nav {
+    /* make background semitransparent with a blur with dark color */
+    background: #141414;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    position: sticky;
+    top: 0;
+    z-index: 2;
+
+    border-bottom: 1px solid var(--color-light50);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 4rem;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    gap: 1.5rem;
+}
+
+nav ul li {
+    display: flex;
+    align-items: center;
+
+}
+
+nav ul li a.active-page {
+    color: var(--color-light);
+}
+
+nav ul li a {
+    color: var(--color-light50);
+    text-decoration: none;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s ease-in-out,
+        color 0.2s ease-in-out;
+    cursor: pointer;
+
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+
+}
+
+/* Hover transition for the links
+    - Starts in the center and then transitions to be full width */
+
+nav ul li a:hover {
+    color: var(--color-light);
+}
+
+nav ul li a::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: var(--color-light50);
+    transition: all 0.2s ease-in-out;
+    transform: translateX(-50%);
+}
+
+nav ul li a:hover::before {
+    width: 100%;
+    left: 0;
+    transform: translateX(0);
+}
+
+#dots {
+    /* fill the width of main but behind all other items in main */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    border-bottom: 1px solid var(--color-light50);
+}
+
+
+main {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    background-color: #14141475;
+    /* 50% backdrop opacity */
+}
+
+main h1 {
+    font-size: 7rem;
+    font-weight: 800;
+    color: var(--color-light);
+    text-align: center;
+    margin-top: 5rem;
+    margin-bottom: 0;
+}
+
+main h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--color-light75);
+    text-align: center;
+}
+
+main #interaction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto;
+    gap: 2rem;
+    margin-top: 5rem;
+}
+
+main #interaction a {
+    width: 10rem;
+    height: 3rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0.75rem 2rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s ease-in-out,
+        color 0.2s ease-in-out,
+        background 0.2s ease-in-out;
+    cursor: pointer;
+
+    position: relative;
+    overflow: hidden;
+
+    text-decoration: none;
+    font-weight: 600;
+}
+
+main #interaction #get-started {
+    position: relative;
+    color: var(--color-dark);
+    background: var(--color-light);
+    z-index: 2;
+    overflow: hidden;
+    box-shadow: 0 0 25px 8px #000000;
+    transition: color 0.2s ease-in-out,
+        box-shadow 0.2s ease-in-out;
+
+}
+
+main #interaction #get-started::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to right, #80cdd4, #8c83cb);
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.3s ease;
+
+    /* emit a glow from the button */
+}
+
+
+main #interaction #get-started:hover::before {
+    opacity: 1;
+}
+
+main #interaction #get-started:hover {
+    color: var(--color-light);
+    box-shadow: 0 0 25px 12px #8c83cb25;
+}
+
+main #interaction #get-started span {
+    position: relative;
+    z-index: 2;
+}
+
+main #interaction #pricing {
+    color: var(--color-light);
+    background: var(--color-dark);
+    border: 1px solid var(--color-light50);
+
+    z-index: 2;
+    transition: border 0.2s ease-in-out;
+}
+
+main #interaction #pricing:hover {
+    color: var(--color-light);
+    background: var(--color-dark);
+    border: 1px solid var(--color-light);
+}
